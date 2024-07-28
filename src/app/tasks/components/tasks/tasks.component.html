@@ -1,0 +1,20 @@
+<section id="tasks">
+  <header>
+    <h2>{{ selectedUser?.name }}'s Tasks</h2>
+    <menu>
+      <button (click)="onStartAddTask()">Add Task</button>
+    </menu>
+  </header>
+
+  <ul *ngIf="userTasks">
+    <li *ngFor="let task of userTasks">
+      <app-task [task]="task" />
+    </li>
+  </ul>
+</section>
+
+<app-new-task
+  *ngIf="isAddindTask"
+  [userId]="selectedUser?.id"
+  (close)="onCloseAddTasks()"
+/>
